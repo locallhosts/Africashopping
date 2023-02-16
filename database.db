@@ -1,0 +1,59 @@
+CREATE DATABASE PoisePMS;
+USE PoisePMS;
+
+CREATE TABLE Customers (
+  CustomerID INT PRIMARY KEY AUTO_INCREMENT,
+  CustomerName VARCHAR(255),
+  ContactNumber VARCHAR(255),
+  Email VARCHAR(255)
+);
+
+CREATE TABLE ProjectManagers (
+  ProjectManagerID INT PRIMARY KEY AUTO_INCREMENT,
+  ProjectManagerName VARCHAR(255),
+  ContactNumber VARCHAR(255),
+  Email VARCHAR(255)
+);
+
+CREATE TABLE Architects (
+  ArchitectID INT PRIMARY KEY AUTO_INCREMENT,
+  ArchitectName VARCHAR(255),
+  ContactNumber VARCHAR(255),
+  Email VARCHAR(255)
+);
+
+CREATE TABLE StructuralEngineers (
+  StructuralEngineerID INT PRIMARY KEY AUTO_INCREMENT,
+  StructuralEngineerName VARCHAR(255),
+  ContactNumber VARCHAR(255),
+  Email VARCHAR(255)
+);
+
+CREATE TABLE Projects (
+  ProjectID INT PRIMARY KEY AUTO_INCREMENT,
+  ProjectName VARCHAR(255),
+  CustomerID INT,
+  ProjectManagerID INT,
+  ArchitectID INT,
+  StructuralEngineerID INT,
+  FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID),
+  FOREIGN KEY (ProjectManagerID) REFERENCES ProjectManagers(ProjectManagerID),
+  FOREIGN KEY (ArchitectID) REFERENCES Architects(ArchitectID),
+  FOREIGN KEY (StructuralEngineerID) REFERENCES StructuralEngineers(StructuralEngineerID)
+);
+
+
+INSERT INTO Customers (CustomerName, ContactNumber, Email)
+VALUES ('youu full name', 'phone number', 'your-email');
+
+INSERT INTO ProjectManagers (ProjectManagerName, ContactNumber, Email)
+VALUES ('youu full name', 'phone number', 'your-email');
+
+INSERT INTO Architects (ArchitectName, ContactNumber, Email)
+VALUES ('youu full name', 'phone number', 'your-email');
+
+INSERT INTO StructuralEngineers (StructuralEngineerName, ContactNumber, Email)
+VALUES ('youu full name', 'phone number', 'your-email');
+
+INSERT INTO Projects (ProjectName, CustomerID, ProjectManagerID, ArchitectID, StructuralEngineerID)
+VALUES ('Sample Project', 1, 1, 1, 1);
